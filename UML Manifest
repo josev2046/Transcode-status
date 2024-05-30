@@ -1,0 +1,40 @@
+@startuml
+
+actor "Developer" as Developer
+participant "Vimeo API" as Vimeo_API
+participant "Vimeo Servers" as Vimeo_Servers
+
+Developer -> Vimeo_API: POST /me/videos\nCreate video
+Vimeo_API -> Vimeo_Servers: Create video request
+Vimeo_Servers --> Vimeo_API: Video created\nResponse with upload link
+Vimeo_API --> Developer: Response with video data\nincluding upload link
+Developer -> Vimeo_API: PATCH upload link\nUpload video file
+Vimeo_API -> Vimeo_Servers: Upload video request
+Vimeo_Servers --> Vimeo_API: Partial upload confirmation\n(Upload-Offset)
+alt Upload complete
+    Creator -> Vimeo_API: HEAD upload link\nVerify upload
+    Vimeo_API -> Vimeo_Servers: Verify upload request
+    Vimeo_Servers --> Vimeo_API: Upload verified\nResponse with video data
+    Vimeo_API --> Developer: Upload verified\nResponse with video data
+    Developer -> Vimeo_API: GET /videos/{video_id}\nCheck transcode status
+    Vimeo_API -> Vimeo_Servers: Check transcode status request
+    Vimeo_Servers --> Vimeo_API: Transcode status
+    Vimeo_API --> Developer: Transcode status
+    alt Transcoding in progress
+        loop Every n seconds
+            Developer -> Vimeo_API: GET /videos/{video_id}\nCheck transcode status
+            Vimeo_API -> Vimeo_Servers: Check transcode status request
+            Vimeo_Servers --> Vimeo_API: Transcode status
+            Vimeo_API --> Developer: Transcode status
+            Developer -> Developer: Wait for n seconds
+        end
+    else Transcoding complete
+        Vimeo_API --> Vimeo_Servers: Transcoding complete\nResponse with video data
+        Vimeo_Servers --> Vimeo_API: Transcoding complete\nResponse with video data
+        Vimeo_API --> Developer: Transcoding complete\nResponse with video data
+    end
+else Upload incomplete
+    Developer --> Developer: Handle upload failure
+end
+
+@enduml
