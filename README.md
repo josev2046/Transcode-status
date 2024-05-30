@@ -21,3 +21,7 @@ In case of an upload failure, I should receive notifications to handle the failu
 # Logic Flow: 
 ![image](https://github.com/josev2046/Transcode-status/assets/15835851/878977f5-f984-442f-8b92-ca03255ad230)
 
+# Rapid Prototype:
+https://github.com/josev2046/Transcode-status/assets/15835851/df184548-8ddd-4d72-8d69-8d7dda8a31f3
+
+
