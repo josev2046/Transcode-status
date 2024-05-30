@@ -1,4 +1,4 @@
-This script monitors the transcoding progress of the uploaded video, displaying a progress bar in the command line interface until transcoding is complete or encounters an error.
+**Transcode Status:** This script monitors the transcoding progress of the uploaded video, displaying a progress bar in the command line interface until transcoding is complete or encounters an error.
 
 **User Story:** 
 As a developer, I want to upload videos programmatically to Vimeo, verify successful upload, and monitor the transcoding process to ensure that videos are ready for viewing.
