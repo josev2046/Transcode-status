@@ -1,9 +1,9 @@
 **Transcode Status:** This script monitors the transcoding progress of the uploaded video, displaying a progress bar in the command line interface until transcoding is complete or encounters an error.
 
-**User Story:** 
+**Story:** 
 As a developer, I want to upload videos programmatically to Vimeo, verify successful upload, and monitor the transcoding process to ensure that videos are ready for viewing.
 
-**Acceptance Criteria:**
+**Criteria:**
 Upon receiving the request, the Vimeo API should create a video on the Vimeo Servers and provide a response containing an upload link.
 
 After patching the upload link with the video file, I should receive partial upload confirmations from the Vimeo Servers to track the progress.
