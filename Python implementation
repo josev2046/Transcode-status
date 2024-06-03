@@ -24,8 +24,7 @@ params = {
     'name': filename_without_extension  
 }
 
-response = requests.post('https://api.vimeo.com/me/videos', headers=headers, json=params)
-video_data = response.json()
+response = requests.post('https://api.vimeo.com/me/videos?fields=uri,upload.upload_link', headers=headers, json=params)video_data = response.json()
 upload_link = video_data.get('upload', {}).get('upload_link')
 video_id = video_data['uri'].split('/')[-1]
 
@@ -63,7 +62,7 @@ else:
 
 # Step 4: Poll video transcode status and log to CLI with progress bar
 def get_video_status(video_id, access_token):
-    url = f"https://api.vimeo.com/videos/{video_id}"
+    url = f"https://api.vimeo.com/videos/{video_id}?fields=uri,transcode.status"
     headers = {
         'Authorization': f'Bearer {access_token}'
     }
