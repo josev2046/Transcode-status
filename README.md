@@ -20,7 +20,7 @@ Upon completion of transcoding, the Vimeo API should provide a response indicati
 
 In case of an upload failure, I should receive notifications to handle the failure appropriately.
 
-**Other:** Vimeo has a webhooks API, CAPABILITY_WEBHOOKS, in public beta right now, with a scheduled launch in Q3. A video’s conversion/transcode status is also returned under the “status” field in the “transcode” object of the video response. This field will return the value “complete”, “error”, or “in_progress.”
+**Other:** Vimeo has a webhooks API, CAPABILITY_WEBHOOKS. A video’s conversion/transcode status is also returned under the “status” field in the “transcode” object of the video response. This field will return the value “complete”, “error”, or “in_progress.”
 You could periodically make GET requests to the API to get the video's transcode status.
 
 **Logic Flow:** 
