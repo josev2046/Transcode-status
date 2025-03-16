@@ -32,3 +32,7 @@ You could periodically make GET requests to the API to get the video's transcode
 https://github.com/josev2046/Transcode-status/assets/15835851/df184548-8ddd-4d72-8d69-8d7dda8a31f3
 
 
+
+[![DOI](https://zenodo.org/badge/808330567.svg)](https://doi.org/10.5281/zenodo.15034998)
+
+
